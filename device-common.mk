@@ -262,9 +262,13 @@ PRODUCT_PACKAGES += \
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl:32 \
-    android.hardware.gatekeeper@1.0-service.exynos7870 \
-    gatekeeper.exynos7870
+    android.hardware.gatekeeper@1.0-impl
+
+# Gatekeeper fails to start when the 32-bit implementation/service is selected.
+# Keep these disabled until the 64-bit Gatekeeper setup is fully understood.
+    #android.hardware.gatekeeper@1.0-impl:32 \
+    #android.hardware.gatekeeper@1.0-service.exynos7870 \
+    #gatekeeper.exynos7870
 
 # Healthd
 PRODUCT_PACKAGES += \
@@ -292,15 +296,21 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/sec_touchscreen.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/sec_touchscreen.kl
 
 # Keymaster
-# android.hardware.keymaster@3.0-impl.exynos7870 with samsungs MDFPP keystore support
-# NOTICE: works only with trusted devices
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service.exynos7870
+
+# Disabled due to issues with the Keymaster/keystore setup.# Keymaster
+# android.hardware.keymaster@3.0-impl.exynos7870 with samsungs MDFPP keystore support # NOTICE: works only with trusted devices
 # android.hardware.keymaster@3.0-service.exynos7870 (arm only service)
+
 #PRODUCT_PACKAGES += \
 #    android.hardware.keymaster@3.0-impl.exynos7870 \
 #    android.hardware.keymaster@3.0-service.exynos7870
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl:32 \
-    android.hardware.keymaster@3.0-service.exynos7870
+
+#PRODUCT_PACKAGES += \
+#    android.hardware.keymaster@3.0-impl:32 \
+#    android.hardware.keymaster@3.0-service.exynos7870
 
 # Lights
 PRODUCT_PACKAGES += \
