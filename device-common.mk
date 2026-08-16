@@ -465,9 +465,12 @@ PRODUCT_PACKAGES += \
 
 # Properties
 -include $(LOCAL_PATH)/vendor_prop.mk
-    
+
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+
+# Samsung GNSS HAL
+TARGET_DEVICE_HAS_SEC_GNSS := true
 
 # call the proprietary setup
 $(call inherit-product, vendor/samsung/universal7870-common/universal7870-common-vendor.mk)
