@@ -1,5 +1,5 @@
 # hal_nfc_default.te
-
+allow hal_nfc_default nfc_device:chr_file ioctl;
 allow hal_nfc_default nfc_vendor_data_file:dir w_dir_perms;
 allow hal_nfc_default nfc_vendor_data_file:file create_file_perms;
 
